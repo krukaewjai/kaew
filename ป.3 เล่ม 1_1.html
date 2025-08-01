@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แบบฝึกหัด: จำนวนนับไม่เกิน 100,000</title>
+    <style>
+        /* --- CSS สำหรับตกแต่งหน้าตา --- */
+        body {
+            font-family: 'Sarabun', sans-serif;
+            background-color: #f7f9fc;
+            color: #333;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 25px 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+        h1 {
+            color: #d9534f; /* สีแดงจากหัวข้อในรูป */
+            text-align: center;
+            font-size: 2em;
+        }
+        h2 {
+            color: #0288d1; /* สีเขียวจากหัวข้อย่อย */
+            border-left: 5px solid #0288d1;
+            padding-left: 10px;
+        }
+        .question-block {
+            background-color: #fdf6e6; /* สีพื้นหลังของโจทย์ */
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .question-text {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #c75c56;
+        }
+        .answer-grid {
+            display: grid;
+            grid-template-columns: 150px 1fr;
+            gap: 10px;
+            align-items: center;
+            margin-top: 15px;
+        }
+        label {
+            font-weight: bold;
+            text-align: right;
+        }
+        input[type="text"] {
+            width: 95%;
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 1.1em;
+            font-family: inherit;
+        }
+        /* Style สำหรับการตรวจคำตอบ */
+        input.correct {
+            border: 2px solid #28a745;
+            background-color: #e9f7ef;
+        }
+        input.incorrect {
+            border: 2px solid #dc3545;
+            background-color: #f8d7da;
+        }
+        .button-container {
+            text-align: center;
+            margin-top: 30px;
+            gap: 15px;
+            display: flex;
+            justify-content: center;
+        }
+        button {
+            padding: 12px 25px;
+            font-size: 1.1em;
+            font-weight: bold;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            color: white;
+        }
+        #checkBtn {
+            background-color: #007bff; /* สีน้ำเงิน */
+        }
+        #resetBtn {
+            background-color: #6c757d; /* สีเทา */
+        }
+        #results {
+            text-align: center;
+            font-size: 1.3em;
+            font-weight: bold;
+            margin-top: 25px;
+        }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="container">
+    <h1>จำนวนนับไม่เกิน 100,000</h1>
+    <h2>การอ่านและการเขียนตัวเลขฮินดูอารบิก ตัวเลขไทย และตัวหนังสือแสดงจำนวนนับ</h2>
+    <p><strong>คำชี้แจง:</strong> เขียนตัวเลขฮินดูอารบิก ตัวเลขไทย และตัวหนังสือแสดงจำนวนต่อไปนี้ให้ถูกต้อง</p>
+
+    <div class="question-block">
+        <p class="question-text">1. 2 พัน กับ 5 ร้อย กับ 7 สิบ กับ 0 หน่วย</p>
+        <div class="answer-grid">
+            <label for="q1-arabic">ตัวเลขฮินดูอารบิก:</label>
+            <input type="text" id="q1-arabic" autocomplete="off">
+            <label for="q1-thai">ตัวเลขไทย:</label>
+            <input type="text" id="q1-thai" autocomplete="off">
+            <label for="q1-word">ตัวหนังสือ:</label>
+            <input type="text" id="q1-word" autocomplete="off">
+        </div>
+    </div>
+
+    <div class="question-block">
+        <p class="question-text">2. 4 พัน กับ 9 ร้อย กับ 6 สิบ กับ 3 หน่วย</p>
+        <div class="answer-grid">
+            <label for="q2-arabic">ตัวเลขฮินดูอารบิก:</label>
+            <input type="text" id="q2-arabic" autocomplete="off">
+            <label for="q2-thai">ตัวเลขไทย:</label>
+            <input type="text" id="q2-thai" autocomplete="off">
+            <label for="q2-word">ตัวหนังสือ:</label>
+            <input type="text" id="q2-word" autocomplete="off">
+        </div>
+    </div>
+
+    <div class="question-block">
+        <p class="question-text">3. 8 พัน กับ 7 ร้อย กับ 0 สิบ กับ 1 หน่วย</p>
+        <div class="answer-grid">
+            <label for="q3-arabic">ตัวเลขฮินดูอารบิก:</label>
+            <input type="text" id="q3-arabic" autocomplete="off">
+            <label for="q3-thai">ตัวเลขไทย:</label>
+            <input type="text" id="q3-thai" autocomplete="off">
+            <label for="q3-word">ตัวหนังสือ:</label>
+            <input type="text" id="q3-word" autocomplete="off">
+        </div>
+    </div>
+
+    <div class="question-block">
+        <p class="question-text">4. 1 หมื่น กับ 4 พัน กับ 6 ร้อย กับ 5 สิบ กับ 7 หน่วย</p>
+        <div class="answer-grid">
+            <label for="q4-arabic">ตัวเลขฮินดูอารบิก:</label>
+            <input type="text" id="q4-arabic" autocomplete="off">
+            <label for="q4-thai">ตัวเลขไทย:</label>
+            <input type="text" id="q4-thai" autocomplete="off">
+            <label for="q4-word">ตัวหนังสือ:</label>
+            <input type="text" id="q4-word" autocomplete="off">
+        </div>
+    </div>
+
+    <div class="question-block">
+        <p class="question-text">5. 6 หมื่น กับ 0 พัน กับ 8 ร้อย กับ 5 สิบ กับ 1 หน่วย</p>
+        <div class="answer-grid">
+            <label for="q5-arabic">ตัวเลขฮินดูอารบิก:</label>
+            <input type="text" id="q5-arabic" autocomplete="off">
+            <label for="q5-thai">ตัวเลขไทย:</label>
+            <input type="text" id="q5-thai" autocomplete="off">
+            <label for="q5-word">ตัวหนังสือ:</label>
+            <input type="text" id="q5-word" autocomplete="off">
+        </div>
+    </div>
+
+    <div class="button-container">
+        <button id="checkBtn">ตรวจคำตอบ</button>
+        <button id="resetBtn">ลองใหม่</button>
+    </div>
+
+    <div id="results"></div>
+</div>
+
+<script>
+// --- JavaScript สำหรับการทำงานของแบบฝึกหัด ---
+document.addEventListener('DOMContentLoaded', () => {
+
+    // --- เฉลยคำตอบ ---
+    const answers = [
+        { id: "q1", arabic: "2570", thai: "๒๕๗๐", word: "สองพันห้าร้อยเจ็ดสิบ" },
+        { id: "q2", arabic: "4963", thai: "๔๙๖๓", word: "สี่พันเก้าร้อยหกสิบสาม" },
+        { id: "q3", arabic: "8701", thai: "๘๗๐๑", word: "แปดพันเจ็ดร้อยเอ็ด" },
+        { id: "q4", arabic: "14657", thai: "๑๔๖๕๗", word: "หนึ่งหมื่นสี่พันหกร้อยห้าสิบเจ็ด" },
+        { id: "q5", arabic: "60851", thai: "๖๐๘๕๑", word: "หกหมื่นแปดร้อยห้าสิบเอ็ด" },
+    ];
+
+    const checkBtn = document.getElementById('checkBtn');
+    const resetBtn = document.getElementById('resetBtn');
+    const resultsDiv = document.getElementById('results');
+
+    // ฟังก์ชันสำหรับตรวจคำตอบ
+    checkBtn.addEventListener('click', () => {
+        let score = 0;
+        const totalQuestions = answers.length * 3;
+
+        answers.forEach(answer => {
+            // ตรวจตัวเลขอารบิก
+            checkAnswer(`${answer.id}-arabic`, answer.arabic, true);
+            // ตรวจตัวเลขไทย
+            checkAnswer(`${answer.id}-thai`, answer.thai, true);
+            // ตรวจตัวหนังสือ
+            checkAnswer(`${answer.id}-word`, answer.word, false);
+        });
+
+        function checkAnswer(inputId, correctAnswer, isNumeric) {
+            const inputElement = document.getElementById(inputId);
+            let userAnswer = inputElement.value.trim();
+            
+            // ถ้าเป็นตัวเลข ให้ตัดจุลภาค (,) ออกก่อนเทียบ
+            if (isNumeric) {
+                userAnswer = userAnswer.replace(/,/g, '');
+            }
+
+            if (userAnswer === correctAnswer) {
+                inputElement.className = 'correct';
+                score++;
+            } else {
+                inputElement.className = 'incorrect';
+            }
+        }
+
+        resultsDiv.innerHTML = `คะแนนที่ได้: ${score} / ${totalQuestions}`;
+    });
+
+    // ฟังก์ชันสำหรับล้างข้อมูล
+    resetBtn.addEventListener('click', () => {
+        const allInputs = document.querySelectorAll('input[type="text"]');
+        allInputs.forEach(input => {
+            input.value = '';
+            input.className = '';
+        });
+        resultsDiv.innerHTML = '';
+    });
+});
+</script>
+
+</body>
+</html>
